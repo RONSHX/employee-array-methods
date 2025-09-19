@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Info</title>
+</head>
+<body>
+  <h1>Employee Dashboard</h1>
+
+  <button onclick="displayAllEmployees()">Show All Employees</button>
+  <button onclick="calculateTotalSalary()">Total Salary</button>
+  <button onclick="showHREmployees()">HR Department</button>
+  <button onclick="findEmployeeById(2)">Find Employee ID 2</button>
+
+  <script>
+    const employees = [
+      { id: 1, name: "Alice", department: "HR", salary: 50000 },
+      { id: 2, name: "Bob", department: "Engineering", salary: 70000 },
+      { id: 3, name: "Charlie", department: "HR", salary: 55000 },
+      { id: 4, name: "Dana", department: "Marketing", salary: 60000 }
+    ];
+
+    function displayAllEmployees() {
+      console.clear();
+      employees.forEach(emp => {
+        console.log(`${emp.name} (${emp.department}) earns $${emp.salary}`);
+      });
+    }
+
+    function calculateTotalSalary() {
+      console.clear();
+      const total = employees.reduce((sum, emp) => sum + emp.salary, 0);
+      console.log(`Total Salary: $${total}`);
+    }
+
+    function showHREmployees() {
+      console.clear();
+      const hrList = employees.filter(emp => emp.department === "HR");
+      hrList.forEach(emp => {
+        console.log(`${emp.name} (HR) earns $${emp.salary}`);
+      });
+    }
+
+    function findEmployeeById(id) {
+      console.clear();
+      const employee = employees.find(emp => emp.id === id);
+      if (employee) {
+        console.log(`Found: ${employee.name} (${employee.department}) earns $${employee.salary}`);
+      } else {
+        console.log(`No employee found with ID ${id}`);
+      }
+    }
+  </script>
+</body>
+</html>
